@@ -129,8 +129,8 @@ class gitlab::install inherits gitlab {
     notify      => Exec['precompile assets'],
   }
 
-  file {
-    "${git_home}/.gitlab_setup_done":
+  file { "${git_home}/.gitlab_setup_done":
+      ensure  => file,
       owner   => 'root',
       group   => 'root',
       require => Exec['setup gitlab database'];
